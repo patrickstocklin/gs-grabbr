@@ -22,6 +22,13 @@
 #		Is there a mathematical function?
 #		Does the subreddit in particular matter?
 #
+#	NOTES:
+#		Try a mix of camelCase and snake_case,
+#			e.g. grab_All_Submission_Comments
+#		Use Pickle for storing settings in .p files
+#		Might need to authenticate app with OAuth2
+#
+#
 ############################################################
 
 import praw
