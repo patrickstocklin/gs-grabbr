@@ -35,11 +35,35 @@ import praw
 import pickle
 import sys
 import os
+import getpass
+'''
+CONSTANTS
+'''
+
+ACCOUNT_SETTINGS_FILENAME = 'account_settings.p'
 
 #Should handle log-in and authentication
 def init_Account():
-	account = { "username":"TestUserName", "password":"TestPassWord" }
-	pickle.dump(account, open("accountsettings.p", "wb"))	
+	print "Please Enter Your Reddit Username"
+	username = raw_input()
+	print "Please Enter %s's Reddit Password" %(username)
+	password = getpass.getpass()
+	account = { "username":username, "password":password }
+	pickle.dump(account, open(ACCOUNT_SETTINGS_FILENAME, "wb"))	
+
+#Return an Account's Username and Password
+def grab_Account_Credentials():
+	if not os.path.isfile(ACCOUNT_SETTINGS_FILENAME):
+		print "No" + ACCOUNT_SETTINGS_FILENAME + "file present!"
+		return
+	account = pickle.load(open(ACCOUNT_SETTINGS_FILENAME, "rb"))
+	return account['username'], account['password']
+
+#Initializes and Returns PRAW Object
+def init_Reddit_Wrapper(username, password):
+	r = praw.Reddit("Grabbie")
+	r.login(username, password, disable_warning=True)
+	return r
 
 #Given a thread_id, grab all comment-trees that pass parameters
 def grab_Thread_Comments():
@@ -47,13 +71,26 @@ def grab_Thread_Comments():
 
 #Driver
 def main():
-	#init
-	#grab
+	if not os.path.isfile(ACCOUNT_SETTINGS_FILENAME):
+		init_Account()
+	username, password = grab_Account_Credentials()	
+	r = init_Reddit_Wrapper(username, password)	
+	
+	#If Grab Subreddit, grab top 10/20/25 submissions in that subreddit
+	#Elif Grab Submission, grab submission
 
-	#While !exit:
-	#	display results and capture user-input for recs
+	#For all submissions in the queue, grab all comments
+		#For all comment trees, prune comment trees that do not pass
 
-	init_Account()	
+	#For all submissions in queue, 
+		#For all passed comment trees, print neatly to console
 
+	####################################################	
+	hot_Submissions = r.get_subreddit('politics').get_hot(limit=5)
+	for x in hot_Submissions: print str(x)
+	top_Submissions = r.get_subreddit('politics').get_top(limit=5)
+	for x in top_Submissions: print str(x)
+	new_Submissions = r.get_subreddit('politics').get_new(limit=5)
+	for x in new_Submissions: print str(x)
 if __name__ == '__main__':
 	main()
