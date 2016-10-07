@@ -36,6 +36,7 @@ import pickle
 import sys
 import os
 import getpass
+import argparse
 '''
 CONSTANTS
 '''
@@ -71,6 +72,15 @@ def grab_Thread_Comments():
 
 #Driver
 def main():
+	parser = argparse.ArgumentParser(description="A python script to filter unwanted comments from a Reddit-thread")
+	#parser.add_argument('-u', nargs=1, help='The username of your reddit account')
+	#parser.add_argument('-s', nargs=1, help='The subreddits you wish to browse')
+	#parser.add_argument('-t', nargs=1, help='The thread you wish to browse')
+	#parser.add_argument('-n', nargs=1, help='The number of threads you wish to browse given a subreddit')
+	#args = parser.parse_args()
+
+
+
 	if not os.path.isfile(ACCOUNT_SETTINGS_FILENAME):
 		init_Account()
 	username, password = grab_Account_Credentials()	
