@@ -11,7 +11,6 @@
 #	with more upvotes than their parent-comments.
 #	
 #	TO DO:
-#		Authentication of User Account
 #		Option Parsing for Specifying Thread/User
 #		Logging Results/Destroying Them
 #		*** Self-Updating Parameters ***
