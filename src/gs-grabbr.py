@@ -13,6 +13,7 @@
 #	TO DO:
 #		Option Parsing for Specifying Thread/User
 #		Logging Results/Destroying Them
+#		Find TRIE Implementation
 #		*** Self-Updating Parameters ***
 #
 #		How many more upvotes should reply have?
