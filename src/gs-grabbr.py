@@ -11,9 +11,9 @@
 #	with more upvotes than their parent-comments.
 #	
 #	TO DO:
-#		Authentication of User Account
 #		Option Parsing for Specifying Thread/User
 #		Logging Results/Destroying Them
+#		Find TRIE Implementation
 #		*** Self-Updating Parameters ***
 #
 #		How many more upvotes should reply have?
