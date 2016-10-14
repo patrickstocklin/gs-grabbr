@@ -29,3 +29,20 @@ for comment in comms:
 	print comment.body
 	print comment.score
 	#print(vars(comment))
+
+#Grab Subreddit
+#Grab Submission
+#For all comments in Submission
+	#Pass Through
+	#
+
+#I think I should make a tree out of this
+#Root Node points to all Top Level Comments
+
+
+
+
+
+
+
+
