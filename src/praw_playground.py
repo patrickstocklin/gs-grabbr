@@ -24,10 +24,13 @@ print comms.count
 print len(comms)
 print '====================================='
 for comment in comms:
-	#print(dir(comment))
+	print(dir(comment))
 	print '===='
+
 	print comment.body
 	print comment.score
+	print comment._replies
+	print len(comment._replies)
 	#print(vars(comment))
 
 #Grab Subreddit
