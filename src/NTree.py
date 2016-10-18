@@ -3,13 +3,14 @@ import os
 import time
 
 class Node():
-	def __init__(self, comment):
+	def __init__(self, comment, score):
 		self.comment = comment
 		self.children = []
-		self.parent = None	
-
+		self.score = score
+		self.parent = None
+	
 	def printNode(self):
-		print self.comment
+		print str(self.score) + ':' + self.comment
 
 	def addChild(self, Node):
 		self.children.append(Node)
@@ -21,16 +22,23 @@ class Node():
 
 class NTree():	
 	def __init__(self):
-		self.root = Node()
+		self.root = Node("", 0)
+		self.topLevelComments = []		
 
-	def printTree(self):
+	def populateTopLevelComments(self, comments):	
+		for topLevelComment in comments:
+			node = Node(topLevelComment.body, topLevelComment.score)
+			self.root.addChild(node)		
+
+	def printTopLevelComments(self):
 		print "Printing"
-
+		for comment in self.root.children:
+			comment.printNode()
 def main():
 	print "begin"
-	a = Node("Node A")
+	a = Node("Node A", 0)
 	a.printNode()
-	b = Node("Node B")
+	b = Node("Node B", 0)
 	b.printNode()
 	a.addChild(b)
 	a.printChildren()
