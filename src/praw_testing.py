@@ -6,8 +6,6 @@ r = praw.Reddit("Playing Around")
 r.login('DontKillTheMedic', disable_warning=True)
 
 subreddit = r.get_subreddit('Python')
-#print(dir(subreddit))
-#print(vars(subreddit))
 #print '====================================='
 submission = subreddit.get_hot(limit=1)
 #print(dir(submission))
